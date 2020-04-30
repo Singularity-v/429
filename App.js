@@ -12,6 +12,7 @@ import {ArcticScreen, ArcticScreenDetail,DesertScreen,DesertScreenDetail,Rainfor
 import {NotificationScreen} from './src/drawer'
 import {RegisterScreen, LoginScreen} from './src/auth'
 import {IMAGE} from './src/constant/Image'
+import {Buttom} from './src/constant/Buttom'
 
 /*function SafeArea () {
   return(
@@ -33,7 +34,19 @@ function ArcticStack() {
     <StackArctic.Navigator initialRouteName="Arctic">
       <StackArctic.Screen name="Arctic" component={ArcticScreen} options={navOptionHandler}/>
       <StackArctic.Screen name="ArcticDetail" component={ArcticScreenDetail} options={navOptionHandler}/>
+      <StackArctic.Screen name="Buttom" component={Buttom} options={navOptionHandler}/>
     </StackArctic.Navigator>
+  )
+}
+
+const StackButttom = createStackNavigator();
+
+function ButtomStack() {
+  return(
+    <StackButttom.Navigator initialRouteName="ArcticBackl">
+      <StackButttom.Screen name="ArcticBack" component={ArcticScreenDetail} options={navOptionHandler}/>
+      <StackButttom.Screen name="DesertDetai" component={DesertScreenDetail} options={navOptionHandler}/>
+    </StackButttom.Navigator>
   )
 }
 
@@ -66,8 +79,8 @@ function TabNavigator() {
     <Tab.Navigator
     barStyle={{ 
       backgroundColor:'#273939',
-      borderTopStartRadius:25,
-      borderTopEndRadius:25,
+      //borderTopStartRadius:25,
+      //borderTopEndRadius:25,
       margin:0,
       height:60,
       justifyContent:"space-evenly"
@@ -94,14 +107,14 @@ function TabNavigator() {
         }
 
         // You can return any component that you like here!
-        return <Image source={iconName} style={{width:40,height:40,top:-10}}
+        return <Image source={iconName} style={{width:35,height:35,top:-10}}
         //resizeMode="contain"
         />;
       },
     })}
 
     >
-      <Tab.Screen name="Arctic" component={ArcticStack} />
+      <Tab.Screen name="Arctic" component={ArcticScreen} />
       <Tab.Screen name="Desert" component={DesertStack} />
       <Tab.Screen name="Rainforest" component={RainforestStack} />
     </Tab.Navigator>
@@ -129,7 +142,9 @@ export default function App() {
     <NavigationContainer>
       <StackApp.Navigator initialRouteName="Login">
         <StackApp.Screen name="HomeApp" component={DrawerNavigator} options={navOptionHandler}/>
+        <StackApp.Screen name="ArcticDetail" component={ArcticScreenDetail} options={navOptionHandler}/>
         <StackApp.Screen name="Login" component={LoginScreen} options={navOptionHandler}/>
+        <StackApp.Screen name="ArcticBack" component={ButtomStack} options={navOptionHandler}/>
         <StackApp.Screen name="Register" component={RegisterScreen} options={navOptionHandler}/>
       </StackApp.Navigator>
     </NavigationContainer>

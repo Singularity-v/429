@@ -16,7 +16,7 @@ export class CustomHeader extends Component {
                 {
                   isHome ?
                   <TouchableOpacity onPress={() => navigation.openDrawer()}>
-                    <Image style={{width:48,height:48,marginLeft:5}}
+                    <Image style={{width:40,height:40,marginLeft:5,marginTop:5}}
                     source={IMAGE.ICON_MENU}
                     resizeMode="contain"
                     />
@@ -40,7 +40,7 @@ export class CustomHeader extends Component {
               </View>
               <View style={{flex:1}}>
                 <TouchableOpacity style={{alignItems:"flex-end"}}>
-                  <Image style={{width:48,height:48,marginRight:5}}
+                  <Image style={{width:40,height:40,marginRight:5,marginTop:5}}
                   source={IMAGE.ICON_SEARCH}
                   resizeMode="contain"
                   />

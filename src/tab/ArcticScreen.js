@@ -3,6 +3,7 @@ import { StyleSheet, Text, View ,Image ,Button,ImageBackground,TouchableOpacity,
 import {CustomHeader} from '../index'
 import Swiper from 'react-native-swiper'
 import contentData from "../json/Content.json";
+import ArcticDetail from "../tab/ArcticScreenDetail"
 
 export class ArcticScreen extends Component {
     render() {
@@ -30,14 +31,16 @@ export class ArcticScreen extends Component {
 
                 <View>
                   <Text style={styles.word2}>Another</Text>
-                  <View style={styles.square}>
+                  <TouchableOpacity 
+                  style={styles.square}
+                  onPress={() => this.props.navigation.navigate("ArcticDetail")}
+                  >
                       <Image style={styles.p1} source={{ uri:contentData[0].p1}} />
                       <View style={{ justifyContent:"center",alignItems:"flex-start",height:85,left:10,width:200}}>
                       <Text style={styles.word3}>{contentData[0].word}</Text>
                       <Text style={styles.word4}>{contentData[0].word1}</Text>
-                      
                       </View>
-                  </View>
+                  </TouchableOpacity>
                   <View style={styles.square}>
                       <Image style={styles.p1} source={{uri:contentData[1].p1}} />
                       <View style={{ justifyContent:"center",alignItems:"flex-start",height:85,left:10,width:200}}>

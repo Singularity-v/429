@@ -20,6 +20,9 @@ const IMAGE = {
     ICON_TAG: require("../img/Tag.png"),
     ICON_LOGOUT: require("../img/Logout.png"),
     ICON_SETTING: require("../img/Setting.png"),
+
+    ICON_ARROW: require("../img/Arrow.png"),
+    ICON_BACK_ARROW: require("../img/BackArrow.png")
 }
 
 export {IMAGE}

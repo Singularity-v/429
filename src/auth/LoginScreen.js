@@ -26,12 +26,6 @@ export class LoginScreen extends Component {
                     <Text style={styles.TextStyle}>GO!</Text>
                   </View>
                 </TouchableOpacity>
-                <TouchableOpacity
-                  style={{marginTop:20}}
-                  onPress={() => this.props.navigation.navigate("Register")}
-                >
-                  <Text>Register</Text>
-                </TouchableOpacity>
               </View>
               </ImageBackground>
           </View>
