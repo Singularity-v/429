@@ -1,15 +1,17 @@
 import React,{Component} from 'react'
 import { Text, View, Image,TouchableOpacity} from 'react-native';
 import {IMAGE} from './constant/Image'
-
+import {SafeArea} from './constant/SafeArea'
 
 
 export class CustomHeader extends Component {
     render(){
       let {navigation, isHome, title} = this.props
         return(
-            <View style={{flexDirection:"row",height:75}}>
-
+          <View>
+          <SafeArea/>
+            <View style={{flexDirection:"row",height:50}}>
+              
               <View style={{flex:1,justifyContent:"center"}}>
                 {
                   isHome ?
@@ -37,6 +39,7 @@ export class CustomHeader extends Component {
                 <Text style={{textAlign:"center"}}>{title}</Text>
               </View>
               <View style={{flex:1}}></View>
+            </View>
             </View>
         )
     }

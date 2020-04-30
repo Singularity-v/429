@@ -1,39 +1,82 @@
 import React,{Component} from 'react'
-import { Text, View, Image,TouchableOpacity,ScrollView} from 'react-native';
+import { Text, View, StyleSheet,Image,TouchableOpacity,ScrollView} from 'react-native';
 import {IMAGE} from './constant/Image'
-
-
+import {SafeArea} from './constant/SafeArea'
+import {RVText} from './core'
 export class CustomDrawerContent extends Component {
     render() {
         return(
             <View style={{flex:1, backgroundColor: "#273939"}}>
-              
-              <View style={{height:150, alignItems:"center", justifyContent:"center"}}>
+             <SafeArea/>
+              <View style={{height:180, justifyContent:"center", marginLeft:20,}}>
                 <Image source={IMAGE.ICON_HEAD}
-                style={{height:120,width:120,borderRadius:60}}
+                style={{height:90,width:90,borderRadius:60,marginBottom:10}}
                 />
+                <Text style={styles.NameStyle}>Kanahei</Text>
+                <RVText content="Home" style={{color:"#fff"}}/>
               </View>
-              <ScrollView style={{marginLeft:5}}>
+              <ScrollView >
                 <TouchableOpacity
-                  style={{marginTop:20}}
+                  style={styles.BoxStyle}
                   onPress={() => this.props.navigation.navigate("MenuTab")}
                 >
-                  <Text style={{color:"#F1DACC"}}>Menu Tab</Text>
+                  <Image style={styles.IconStyle}   source={IMAGE.ICON_HOME} />
+                  <Text style={styles.TextStyle}>Home</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                  style={{marginTop:20}}
+                 style={styles.BoxStyle}
                   onPress={() => this.props.navigation.navigate("Notifications")}
                 >
-                  <Text style={{color:"#F1DACC"}}>NotificationsScreen</Text>
+                  <Image style={styles.IconStyle}   source={IMAGE.ICON_LIKE} />
+                  <Text style={styles.TextStyle}>Like</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                 style={styles.BoxStyle}
+                  onPress={() => this.props.navigation.navigate("Notifications")}
+                >
+                  <Image style={styles.IconStyle}   source={IMAGE.ICON_TAG} />
+                  <Text style={styles.TextStyle}>Tag</Text>
                 </TouchableOpacity>
               </ScrollView>
-              <TouchableOpacity
-                  style={{marginTop:20,marginLeft:5}}
-                  onPress={() => this.props.navigation.navigate("Login")}
-                >
-                  <Text style={{color:"#F1DACC"}}>Logout</Text>
-                </TouchableOpacity>
+              <View style={{paddingBottom:20}}>
+                <TouchableOpacity
+                  style={styles.BoxStyle}
+                    onPress={() => this.props.navigation.navigate("Login")}
+                  >
+                    <Image style={styles.IconStyle}   source={IMAGE.ICON_SETTING} />
+                    <Text style={styles.TextStyle}>Setting</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity
+                    style={styles.BoxStyle}
+                    onPress={() => this.props.navigation.navigate("Login")}
+                  >
+                    <Image style={styles.IconStyle}  source={IMAGE.ICON_LOGOUT} />
+                    <Text style={styles.TextStyle}>Logout</Text>
+                  </TouchableOpacity>
+                </View>
             </View>
           )
     }
 }
+
+const styles = StyleSheet.create({
+  NameStyle: {
+    color:"#93AB98",
+    fontSize: 20,
+    fontWeight:"bold",
+  },
+  BoxStyle: {
+    marginLeft:10,
+    flexDirection:"row",
+    alignItems:"center"
+  },
+  IconStyle: {
+    width:40,
+    height:40,
+    marginRight:20,
+  },
+  TextStyle:{
+    color:"#F1DACC",
+    fontSize: 16,
+  }
+});
