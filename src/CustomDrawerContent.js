@@ -1,19 +1,17 @@
 import React,{Component} from 'react'
 import { Text, View, StyleSheet,Image,TouchableOpacity,ScrollView} from 'react-native';
 import {IMAGE} from './constant/Image'
-import {SafeArea} from './constant/SafeArea'
 import {RVText} from './core'
 export class CustomDrawerContent extends Component {
     render() {
         return(
             <View style={{flex:1, backgroundColor: "#273939"}}>
-             <SafeArea/>
+              <View style={{width:360,height:25}}></View>
               <View style={{height:180, justifyContent:"center", marginLeft:20,}}>
                 <Image source={IMAGE.ICON_HEAD}
                 style={{height:90,width:90,borderRadius:60,marginBottom:10}}
                 />
                 <Text style={styles.NameStyle}>Kanahei</Text>
-                <RVText content="Home" style={{color:"#fff"}}/>
               </View>
               <ScrollView >
                 <TouchableOpacity

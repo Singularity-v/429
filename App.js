@@ -1,13 +1,14 @@
 import * as React from 'react';
-import { Text, View, Image,TouchableOpacity} from 'react-native';
+import { Text, View, Image,TouchableOpacity,StyleSheet} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator, BottomTabView } from '@react-navigation/bottom-tabs';
+import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import {createStackNavigator} from "@react-navigation/stack";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { ScrollView } from 'react-native-gesture-handler';
 
 import {CustomHeader,CustomDrawerContent} from './src'
-import {HomeScreen, HomeScreenDetail,SettingsScreen,SettingsScreenDetail} from './src/tab'
+import {ArcticScreen, ArcticScreenDetail,DesertScreen,DesertScreenDetail,RainforestScreen,RainforestScreenDetail} from './src/tab'
 import {NotificationScreen} from './src/drawer'
 import {RegisterScreen, LoginScreen} from './src/auth'
 import {IMAGE} from './src/constant/Image'
@@ -19,65 +20,92 @@ import {IMAGE} from './src/constant/Image'
 }*/
 
 
-const Tab = createBottomTabNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
 const navOptionHandler = () => ({
   headerShown:false
 })
 
-const StackHome = createStackNavigator();
+const StackArctic = createStackNavigator();
 
-function HomeStack() {
+function ArcticStack() {
   return(
-    <StackHome.Navigator initialRouteName="Home">
-      <StackHome.Screen name="Home" component={HomeScreen} options={navOptionHandler}/>
-      <StackHome.Screen name="HomeDetail" component={HomeScreenDetail} options={navOptionHandler}/>
-    </StackHome.Navigator>
+    <StackArctic.Navigator initialRouteName="Arctic">
+      <StackArctic.Screen name="Arctic" component={ArcticScreen} options={navOptionHandler}/>
+      <StackArctic.Screen name="ArcticDetail" component={ArcticScreenDetail} options={navOptionHandler}/>
+    </StackArctic.Navigator>
   )
 }
 
-const StackSetting = createStackNavigator();
+const StackDesert = createStackNavigator();
 
 
-function SettingStack() {
+function DesertStack() {
   return(
-    <StackSetting.Navigator initialRouteName="Setting">
-      <StackSetting.Screen name="Setting" component={SettingsScreen} options={navOptionHandler}/>
-      <StackSetting.Screen name="SettingDetail" component={SettingsScreenDetail} options={navOptionHandler}/>
-    </StackSetting.Navigator>
+    <StackDesert.Navigator initialRouteName="Desert">
+      <StackDesert.Screen name="Desert" component={DesertScreen} options={navOptionHandler}/>
+      <StackDesert.Screen name="DesertDetail" component={DesertScreenDetail} options={navOptionHandler}/>
+    </StackDesert.Navigator>
+  )
+}
+
+const StackRainforest = createStackNavigator();
+
+
+function RainforestStack() {
+  return(
+    <StackRainforest.Navigator initialRouteName="Rainforest">
+      <StackRainforest.Screen name="Rainforest" component={RainforestScreen} options={navOptionHandler}/>
+      <StackRainforest.Screen name="RainforestDetail" component={RainforestScreenDetail} options={navOptionHandler}/>
+    </StackRainforest.Navigator>
   )
 }
 
 function TabNavigator() {
   return(
     <Tab.Navigator
+    barStyle={{ 
+      backgroundColor:'#273939',
+      borderTopStartRadius:25,
+      borderTopEndRadius:25,
+      margin:0,
+      height:60,
+      justifyContent:"space-evenly"
+    }}
+    activeTintColor= 'tomato'
+    inactiveTintColor='gray'
     screenOptions={({ route }) => ({
       tabBarIcon: ({ focused, color, size }) => {
         let iconName;
 
-        if (route.name === 'Home') {
+        if (route.name === 'Arctic') {
           iconName = focused
             ? IMAGE.ICON_A
             : IMAGE.ICON_ARCTIC_CHANGE
-        } else if (route.name === 'Settings') {
+        } else if (route.name === 'Desert') {
           iconName = focused ? 
           IMAGE.ICON_D
           : IMAGE.IMAGE_DESERT_CHANDE;
         }
+        else if (route.name === 'Rainforest') {
+          iconName = focused ? 
+         IMAGE.ICON_R
+          : IMAGE.IMAGE_RAINFOREST_CHANDE;
+        }
 
         // You can return any component that you like here!
-        return <Image source={iconName} style={{width:40,height:40}}
-        resizeMode="contain"/>;
+        return <Image source={iconName} style={{width:40,height:40,top:-10}}
+        //resizeMode="contain"
+        />;
       },
     })}
-    tabBarOptions={{
-      activeTintColor: 'tomato',
-      inactiveTintColor: 'gray',
-    }}
+
     >
-      <Tab.Screen name="Home" component={HomeStack} />
-      <Tab.Screen name="Settings" component={SettingStack} />
+      <Tab.Screen name="Arctic" component={ArcticStack} />
+      <Tab.Screen name="Desert" component={DesertStack} />
+      <Tab.Screen name="Rainforest" component={RainforestStack} />
     </Tab.Navigator>
+
   )
 }
 

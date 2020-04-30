@@ -2,13 +2,13 @@ import React,{Component} from 'react'
 import { Text, View, TouchableOpacity} from 'react-native';
 import {CustomHeader} from '../index'
 
-export class SettingsScreenDetail extends Component {
+export class ArcticScreenDetail extends Component {
     render() {
         return (
             <View style={{ flex: 1 }}>
-              <CustomHeader title="Setting Detail" navigation={this.props.navigation}/>
+              <CustomHeader title="Arctic Detail" navigation={this.props.navigation}/>
                 <View style={{flex:1,justifyContent:"center", alignItems:"center"}}>
-                  <Text>Setting Detail!</Text>
+                  <Text>Arctic Detail!</Text>
                 </View>
             </View>
           );

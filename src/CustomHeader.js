@@ -10,7 +10,7 @@ export class CustomHeader extends Component {
         return(
           <View>
           <SafeArea/>
-            <View style={{flexDirection:"row",height:50}}>
+            <View style={{flexDirection:"row",height:50,backgroundColor:"#5E7369"}}>
               
               <View style={{flex:1,justifyContent:"center"}}>
                 {
@@ -36,9 +36,16 @@ export class CustomHeader extends Component {
               </View>
 
               <View style={{flex:1.5, justifyContent:"center"}}>
-                <Text style={{textAlign:"center"}}>{title}</Text>
+                <Text style={{textAlign:"center",color:"#F1DACC",fontSize:20,fontWeight:"bold"}}>{title}</Text>
               </View>
-              <View style={{flex:1}}></View>
+              <View style={{flex:1}}>
+                <TouchableOpacity style={{alignItems:"flex-end"}}>
+                  <Image style={{width:48,height:48,marginRight:5}}
+                  source={IMAGE.ICON_SEARCH}
+                  resizeMode="contain"
+                  />
+                </TouchableOpacity>
+              </View>
             </View>
             </View>
         )

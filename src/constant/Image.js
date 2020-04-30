@@ -1,6 +1,7 @@
 const IMAGE = {
     ICON_HEAD: require("../img/Head.png"),
     ICON_MENU: require("../img/menu.png"),
+    ICON_SEARCH: require('../img/Search.png'),
     ICON_BACK: require("../img/Back.png"),
 
     ICON_A: require("../img/A.png"),
@@ -8,6 +9,9 @@ const IMAGE = {
 
     ICON_D: require("../img/D.png"),
     IMAGE_DESERT_CHANDE: require("../img/Desert_change.png"),
+
+    ICON_R: require("../img/R.png"),
+    IMAGE_RAINFOREST_CHANDE: require("../img/Rainforest_change.png"),
 
     ICON_MEOWMO: require("../img/MeowMo.png"),
 

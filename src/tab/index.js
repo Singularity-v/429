@@ -1,5 +1,8 @@
-export * from './HomeScreen'
-export * from './HomeScreenDetail'
+export * from './ArcticScreen'
+export * from './ArcticScreenDetail'
 
-export * from './SettingsScreen'
-export * from './SettingsScreenDetail'
+export * from './DesertScreen'
+export * from './DesertScreenDetail'
+
+export * from './RainforestScreen'
+export * from './RainforestScreenDetail'

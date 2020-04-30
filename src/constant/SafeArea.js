@@ -4,7 +4,7 @@ import React,{Component} from 'react'
 export class SafeArea extends Component {
     render() {
         return(
-            <View style={{width:360,height:25}}></View>
+            <View style={{width:360,height:25,backgroundColor:"#5E7369"}}></View>
           )
     }
 }
