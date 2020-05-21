@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { Text, View, Image,TouchableOpacity,StyleSheet} from 'react-native';
+import { Text, View, Image,AsyncStorage} from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator, BottomTabView } from '@react-navigation/bottom-tabs';
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import {createStackNavigator} from "@react-navigation/stack";
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import { ScrollView } from 'react-native-gesture-handler';
+import { SplashScreen } from 'expo';
 
 import {CustomHeader,CustomDrawerContent} from './src'
 import {ArcticScreen, ArcticScreenDetail,DesertScreen,DesertScreenDetail,RainforestScreen,RainforestScreenDetail} from './src/tab'
@@ -20,6 +21,7 @@ import {Buttom} from './src/constant/Buttom'
   )
 }*/
 
+const PERSISTENCE_KEY = "NAVIGATION_STATE";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -138,8 +140,37 @@ function DrawerNavigator({navigation}) {
 const StackApp = createStackNavigator();
 
 export default function App() {
+  const [isLoadingComplete, setLoadingComplete] = React.useState(false);
+  const [initialNavigationState, setInitialNavigationState] = React.useState();
+  
+  React.useEffect(() => {
+    async function loadResourcesAndDataAsync() {
+      try {
+        SplashScreen.preventAutoHide();
+        const savedStateString = await AsyncStorage.getItem(PERSISTENCE_KEY);
+        const state = JSON.parse(savedStateString);
+        setInitialNavigationState(state);
+      } catch (e) {
+        // We might want to provide this error information to an error reporting service
+        console.warn(e);
+      } finally {
+        setLoadingComplete(true);
+        SplashScreen.hide();
+      }
+    }
+    loadResourcesAndDataAsync();
+  }, []);
+
+  if (!isLoadingComplete) {
+    return null;
+  } else {
   return (
-    <NavigationContainer>
+    <NavigationContainer
+    　initialState={initialNavigationState}
+    　onStateChange={(state)=>
+    　AsyncStorage.setItem(PERSISTENCE_KEY, JSON.stringify(state))
+    }
+    >
       <StackApp.Navigator initialRouteName="Login">
         <StackApp.Screen name="HomeApp" component={DrawerNavigator} options={navOptionHandler}/>
         <StackApp.Screen name="ArcticDetail" component={ArcticScreenDetail} options={navOptionHandler}/>
@@ -149,4 +180,5 @@ export default function App() {
       </StackApp.Navigator>
     </NavigationContainer>
   );
+  }
 }
